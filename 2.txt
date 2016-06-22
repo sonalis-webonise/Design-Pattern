@@ -1,0 +1,154 @@
+a. Abstract Factory Design Pattern can be applied to this problem.
+
+b. Pseudo Code
+
+1. create interface for chassis
+
+public interface Chassis
+{
+	getPrice();
+	getPowerConsumption();
+}
+
+2. create concrete classes that implements the chassis interface
+
+2.1 public class TowerChassis implements Chassis{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+}
+
+2.2 public class DesktopChassis implements Chassis{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+}
+
+3. create second interface Cabinet
+
+public interface Cabinet
+{
+	getPrice();
+	getPowerConsumption();
+}
+
+4. create concrete classes that implements the chassis interface
+4.1 public class TowerCabinet implements Cabinet{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+}
+
+4.2 public class DesktopCabinet implements Cabinet{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+}
+
+5. Create abstract class to get factories for Chassis and Cabinet objects
+
+public abstract class Abstractfactory
+{
+	abstract Chassis getChassis(String chas);
+	abstract Cabinet getCabinet(String cab);
+}
+
+6. Create factory classes that extends AbstractFactory to create objects of concrete classes
+
+public class ChassisFactory extends AbstractFactory
+{
+	//getType method to get the type of equipement
+ 	public Chassis getChassis(String chasType)
+	{
+		if chasType=null then
+			return null;
+		if chasType.equals("towerchassis") then
+			return new TowerChassis();
+		else if chasType.equals("desktopchassis") then
+			return new DesktopChassis();
+	}
+	return null;
+	Cabinet getCabinet(String cabType)
+	{
+		return null;
+	}
+}
+
+public class CabinetFactory extends AbstractFactory
+{
+	Chassis getChassis(String chasType)
+	{
+		return null;
+	}
+	//getType method to get the type of equipement
+ 	public Cabinet getCabinet(String cabType)
+	{
+		if cabType=null then
+			return null;
+		if cabType.equals("towercabinet") then
+			return new TowerCabinet();
+		else if cabType.equals("desktopcabinet") then
+			return new DesktopCabinet();
+	}
+	return null;	
+}
+
+
+4. Use factory producer class to get object of concrete class
+
+public class FactoryProducer
+{
+	public static AbstractFactory getFactory(String choice)
+	{
+		if choice.equals("Chassis") then
+			return new ChassisFactory();
+		else if choice.equals("Cabinet") then
+			return new CabinetFactory();
+	}
+}
+
+
+5. AbstractFactoryMain class to get factories of concrete classes by passing the type 
+public class AbstractFactoryMain
+{
+	public static void main(String arg[])
+	{
+
+		AbstractFactory chasFactory = FactoryProducer.getFactory("Chassis");
+		
+		//creation of objects for all concrete classes
+		Chassis c1=chasFactory.getType("Tower chassis");
+		//call methods of towerChassis
+		Chassis c2=chasFactory.getType("desktop chassis");
+		//call methods of desktop Chassis
+
+		AbstractFactory cabFactory = FactoryProducer.getFactory("Cabinet");
+		
+		//creation of objects for all concrete classes
+		Cabinet cab1=cabFactory.getType("Tower cabinet");
+		//call methods of towerCabinet
+		Chassis cab2=cabFactory.getType("desktop cabinet");
+		//call methods of desktop Cabinet
+
+	}
+}

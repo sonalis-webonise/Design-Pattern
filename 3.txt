@@ -1,0 +1,1 @@
+a. Decorator Design Pattern can be applied to this problem.

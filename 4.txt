@@ -1,0 +1,29 @@
+a. Strategy Design Pattern can be used for this problem.
+
+b. steps to switch between sorting algorithms
+
+1. Create Sorter Abstract Class and will be extended by algorithm classes
+
+public class Sorter
+{
+	getSortedList();
+	displayList();
+}
+
+2. create Chassis Interface that will be implemented by equipments classes
+
+public interface Chassis
+{ 
+	getPrice();
+	getPowerComsumption()
+;
+}
+
+
+
+3. Bus , CPU , FloopyDrive Classes implement the Chassis interface.
+
+
+
+4. The Abstract class Sorter will provide the sorted list of equipements
+ with specified algorithm.

@@ -1,0 +1,117 @@
+a. Factory Design Pattern can be applied to this problem.
+
+b. Pseudo Code
+
+1. create interface
+
+public interface Chassis
+{
+	getPrice();
+	getPowerConsumption();
+}
+
+2. create concrete classes that implements the chassis interface
+
+2.1 public class FolppyDiskDrive implements Chassis{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+}
+
+2.2 public class Bus implements Chassis{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+	getNetworkCards();
+}
+
+2.3 publis class memoryUnit implements Chassis{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+}
+
+2.4 publis class CPU implements Chassis{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+}
+
+2.5 public class powerSupply implements Chassis{
+	void getPrice()
+	{
+		//print price of component
+	}
+	void getPowerConsumption()
+	{
+		//print power consumed by the component
+	}
+}
+
+
+3. Chassis factory to create objects of concrete objects
+
+public class ChassisFactory
+{
+	//getType method to get the type of equipement
+ 	public Chassis getType(String eqType)
+	{
+		if eqType=null then
+			return null;
+		if eqType.equals("floppy disk drive") then
+			return new FloppyDiskDrive();
+		else if eqType.equals("bus") then
+			return new Bus();
+		else if eqType.equals("memory unit") then
+			return new memoryUnit();
+		else if eqType.equals("CPU") then
+			return new CPU();
+		else if eqType.equals("power supply") then
+			return new powerSupply();
+	}
+	return null;
+}
+
+4. Use factory to get object of concrete class
+
+public class FactoryPatternChassis
+{
+	//main method
+	public static void main(String arg[])
+	{
+		//create object of factory class
+		ChassisFactory cf=new ChassisFactory();
+		
+		//creation of objects for all concrete classes
+		Chassis c1=cf.getType("floppy disk drive");
+		//call methods of FloppyDiskDrive
+		Chassis c2=cf.getType("bus");
+		//call methods of Bus
+		Chassis c3=cf.getType("memory unit");
+		//call methods of memoryUnit
+		Chassis c4=cf.getType("CPU");
+		//call methods of CPU
+		Chassis c5=cf.getType("power supply");
+		//call methods of powerSupply		
+	}
+}
